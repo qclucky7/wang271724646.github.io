@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="注解,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、注解(annotations)列表@SpringBootApplication：包含了@ComponentScan、@Configuration和@EnableAutoConfiguration注解。其中@ComponentScan让spring Boot扫描到Configuration类并把它加入到程序上下文。 @Configuration等同于spring的XML配置文件；使用Java代码">
+<meta name="keywords" content="注解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot常用注解">
+<meta property="og:url" content="http://yoursite.com/2019/02/23/springboot/index.html">
+<meta property="og:site_name" content="清晨">
+<meta property="og:description" content="一、注解(annotations)列表@SpringBootApplication：包含了@ComponentScan、@Configuration和@EnableAutoConfiguration注解。其中@ComponentScan让spring Boot扫描到Configuration类并把它加入到程序上下文。 @Configuration等同于spring的XML配置文件；使用Java代码">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-02-23T12:32:39.672Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="springboot常用注解">
+<meta name="twitter:description" content="一、注解(annotations)列表@SpringBootApplication：包含了@ComponentScan、@Configuration和@EnableAutoConfiguration注解。其中@ComponentScan让spring Boot扫描到Configuration类并把它加入到程序上下文。 @Configuration等同于spring的XML配置文件；使用Java代码">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/23/springboot/">
+
+
+
+
+
+  <title>springboot常用注解 | 清晨</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">清晨</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">兴趣是最好的老师!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/23/springboot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="王晨">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="清晨">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">springboot常用注解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-23T17:30:43+08:00">
+                2019-02-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/springboot/" itemprop="url" rel="index">
+                    <span itemprop="name">springboot</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="一、注解-annotations-列表"><a href="#一、注解-annotations-列表" class="headerlink" title="一、注解(annotations)列表"></a>一、注解(annotations)列表</h1><h6 id="SpringBootApplication："><a href="#SpringBootApplication：" class="headerlink" title="@SpringBootApplication："></a>@SpringBootApplication：</h6><p>包含了@ComponentScan、@Configuration和@EnableAutoConfiguration注解。其中@ComponentScan让spring Boot扫描到Configuration类并把它加入到程序上下文。</p>
+<h6 id="Configuration"><a href="#Configuration" class="headerlink" title="@Configuration"></a>@Configuration</h6><p>等同于spring的XML配置文件；使用Java代码可以检查类型安全。</p>
+<h6 id="EnableAutoConfiguration"><a href="#EnableAutoConfiguration" class="headerlink" title="@EnableAutoConfiguration"></a>@EnableAutoConfiguration</h6><p>自动配置。<br><a id="more"></a></p>
+<h6 id="ComponentScan"><a href="#ComponentScan" class="headerlink" title="@ComponentScan"></a>@ComponentScan</h6><p>组件扫描，可自动发现和装配一些Bean。</p>
+<h6 id="Component"><a href="#Component" class="headerlink" title="@Component"></a>@Component</h6><p>可配合CommandLineRunner使用，在程序启动后执行一些基础任务。</p>
+<h6 id="RestController"><a href="#RestController" class="headerlink" title="@RestController"></a>@RestController</h6><p>@Controller和@ResponseBody的合集,表示这是个控制器bean,并且是将函数的返回值直 接填入HTTP响应体中,是REST风格的控制器。</p>
+<h6 id="Autowired"><a href="#Autowired" class="headerlink" title="@Autowired"></a>@Autowired</h6><p>自动导入。</p>
+<h6 id="PathVariable"><a href="#PathVariable" class="headerlink" title="@PathVariable"></a>@PathVariable</h6><p>获取参数。</p>
+<h6 id="JsonBackReference"><a href="#JsonBackReference" class="headerlink" title="@JsonBackReference"></a>@JsonBackReference</h6><p>解决嵌套外链问题。</p>
+<h6 id="RepositoryRestResourcepublic"><a href="#RepositoryRestResourcepublic" class="headerlink" title="@RepositoryRestResourcepublic"></a>@RepositoryRestResourcepublic</h6><p>配合spring-boot-starter-data-rest使用。</p>
+<h1 id="二、注解-annotations-详解"><a href="#二、注解-annotations-详解" class="headerlink" title="二、注解(annotations)详解"></a>二、注解(annotations)详解</h1><h6 id="SpringBootApplication：-1"><a href="#SpringBootApplication：-1" class="headerlink" title="@SpringBootApplication："></a>@SpringBootApplication：</h6><p>申明让spring boot自动给程序进行必要的配置，这个配置等同于：@Configuration ，@EnableAutoConfiguration 和 @ComponentScan 三个配置。</p>
+<pre><code>
+package com.example.myproject; 
+import org.springframework.boot.SpringApplication; 
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+@SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan 
+public class Application { 
+public static void main(String[] args) { 
+SpringApplication.run(Application.class, args); 
+} 
+}
+</code></pre>
+
+
+<h6 id="ResponseBody："><a href="#ResponseBody：" class="headerlink" title="@ResponseBody："></a>@ResponseBody：</h6><p>表示该方法的返回结果直接写入HTTP response body中，一般在异步获取数据时使用，用于构建RESTful的api。在使用@RequestMapping后，返回值通常解析为跳转路径，加上@responsebody后返回结果不会被解析为跳转路径，而是直接写入HTTP response body中。比如异步获取json数据，加上@responsebody后，会直接返回json数据。该注解一般会配合@RequestMapping一起使用。示例代码：</p>
+<pre><code>
+@RequestMapping(“/test”) 
+@ResponseBody 
+public String test(){ 
+return”ok”; 
+}
+</code></pre>
+
+<h6 id="Controller："><a href="#Controller：" class="headerlink" title="@Controller："></a>@Controller：</h6><p>用于定义控制器类，在spring 项目中由控制器负责将用户发来的URL请求转发到对应的服务接口（service层），一般这个注解在类中，通常方法需要配合注解@RequestMapping。示例代码：</p>
+<pre><code>
+@Controller 
+@RequestMapping(“/demoInfo”) 
+publicclass DemoController { 
+@Autowired 
+private DemoInfoService demoInfoService;
+
+@RequestMapping("/hello")
+public String hello(Map<string,object> map){
+   System.out.println("DemoController.hello()");
+   map.put("hello","from TemplateController.helloHtml");
+   //会使用hello.html或者hello.ftl模板进行渲染显示.
+   return"/hello";
+}
+}
+</string,object></code></pre>
+
+
+<h6 id="RestController："><a href="#RestController：" class="headerlink" title="@RestController："></a>@RestController：</h6><p>用于标注控制层组件(如struts中的action)，@ResponseBody和@Controller的合集。示例代码：</p>
+<pre><code>
+package com.kfit.demo.web;
+import org.springframework.web.bind.annotation.RequestMapping; 
+import org.springframework.web.bind.annotation.RestController;
+@RestController 
+@RequestMapping(“/demoInfo2”) 
+publicclass DemoController2 {
+
+@RequestMapping("/test")
+public String test(){
+   return"ok";
+}
+}
+</code></pre>
+
+
+<h6 id="RequestMapping："><a href="#RequestMapping：" class="headerlink" title="@RequestMapping："></a>@RequestMapping：</h6><p>提供路由信息，负责URL到Controller中的具体函数的映射。</p>
+<h6 id="EnableAutoConfiguration："><a href="#EnableAutoConfiguration：" class="headerlink" title="@EnableAutoConfiguration："></a>@EnableAutoConfiguration：</h6><p>Spring Boot自动配置（auto-configuration）：尝试根据你添加的jar依赖自动配置你的Spring应用。例如，如果你的classpath下存在HSQLDB，并且你没有手动配置任何数据库连接beans，那么我们将自动配置一个内存型（in-memory）数据库”。你可以将@EnableAutoConfiguration或者@SpringBootApplication注解添加到一个@Configuration类上来选择自动配置。如果发现应用了你不想要的特定自动配置类，你可以使用@EnableAutoConfiguration注解的排除属性来禁用它们。</p>
+<h6 id="ComponentScan："><a href="#ComponentScan：" class="headerlink" title="@ComponentScan："></a>@ComponentScan：</h6><p>表示将该类自动发现扫描组件。个人理解相当于，如果扫描到有@Component、@Controller、@Service等这些注解的类，并注册为Bean，可以自动收集所有的Spring组件，包括@Configuration类。我们经常使用@ComponentScan注解搜索beans，并结合@Autowired注解导入。可以自动收集所有的Spring组件，包括@Configuration类。我们经常使用@ComponentScan注解搜索beans，并结合@Autowired注解导入。如果没有配置的话，Spring Boot会扫描启动类所在包下以及子包下的使用了@Service,@Repository等注解的类。</p>
+<h6 id="Configuration："><a href="#Configuration：" class="headerlink" title="@Configuration："></a>@Configuration：</h6><p>相当于传统的xml配置文件，如果有些第三方库需要用到xml文件，建议仍然通过@Configuration类作为项目的配置主类——可以使用@ImportResource注解加载xml配置文件。</p>
+<h6 id="Import："><a href="#Import：" class="headerlink" title="@Import："></a>@Import：</h6><p>用来导入其他配置类。</p>
+<h6 id="ImportResource："><a href="#ImportResource：" class="headerlink" title="@ImportResource："></a>@ImportResource：</h6><p>用来加载xml配置文件。</p>
+<h6 id="Autowired："><a href="#Autowired：" class="headerlink" title="@Autowired："></a>@Autowired：</h6><p>自动导入依赖的bean</p>
+<h6 id="Service："><a href="#Service：" class="headerlink" title="@Service："></a>@Service：</h6><p>一般用于修饰service层的组件</p>
+<h6 id="Repository："><a href="#Repository：" class="headerlink" title="@Repository："></a>@Repository：</h6><p>使用@Repository注解可以确保DAO或者repositories提供异常转译，这个注解修饰的DAO或者repositories类会被ComponetScan发现并配置，同时也不需要为它们提供XML配置项。</p>
+<h6 id="Bean："><a href="#Bean：" class="headerlink" title="@Bean："></a>@Bean：</h6><p>用@Bean标注方法等价于XML中配置的bean。</p>
+<h6 id="Value："><a href="#Value：" class="headerlink" title="@Value："></a>@Value：</h6><p>注入Spring boot application.properties配置的属性的值。示例代码：</p>
+<p>@Value(value = “#{message}”)<br>private String message;</p>
+<h6 id="Inject："><a href="#Inject：" class="headerlink" title="@Inject："></a>@Inject：</h6><p>等价于默认的@Autowired，只是没有required属性；</p>
+<h6 id="Component："><a href="#Component：" class="headerlink" title="@Component："></a>@Component：</h6><p>泛指组件，当组件不好归类的时候，我们可以使用这个注解进行标注。</p>
+<h6 id="Bean"><a href="#Bean" class="headerlink" title="@Bean:"></a>@Bean:</h6><p>相当于XML中的,放在方法的上面，而不是类，意思是产生一个bean,并交给spring管理。</p>
+<h6 id="AutoWired："><a href="#AutoWired：" class="headerlink" title="@AutoWired："></a>@AutoWired：</h6><p>自动导入依赖的bean。byType方式。把配置好的Bean拿来用，完成属性、方法的组装，它可以对类成员变量、方法及构造函数进行标注，完成自动装配的工作。当加上（required=false）时，就算找不到bean也不报错。</p>
+<h6 id="Qualifier："><a href="#Qualifier：" class="headerlink" title="@Qualifier："></a>@Qualifier：</h6><p>当有多个同一类型的Bean时，可以用@Qualifier(“name”)来指定。与@Autowired配合使用。@Qualifier限定描述符除了能根据名字进行注入，但能进行更细粒度的控制如何选择候选者，具体使用方式如下：</p>
+<p><pre><code><br>@Autowired<br>@Qualifier(value = “demoInfoService”)<br>private DemoInfoService demoInfoService;<br></code></pre></p>
+<h6 id="Resource-name-”name”-type-”type”-："><a href="#Resource-name-”name”-type-”type”-：" class="headerlink" title="@Resource(name=”name”,type=”type”)："></a>@Resource(name=”name”,type=”type”)：</h6><p>没有括号内内容的话，默认byName。与@Autowired干类似的事。</p>
+<h1 id="三、JPA注解"><a href="#三、JPA注解" class="headerlink" title="三、JPA注解"></a>三、JPA注解</h1><h6 id="Entity：-Table-name-”“-："><a href="#Entity：-Table-name-”“-：" class="headerlink" title="@Entity：@Table(name=”“)："></a>@Entity：@Table(name=”“)：</h6><p>表明这是一个实体类。一般用于jpa这两个注解一般一块使用，但是如果表名和实体类名相同的话，@Table可以省略</p>
+<h6 id="MappedSuperClass"><a href="#MappedSuperClass" class="headerlink" title="@MappedSuperClass:"></a>@MappedSuperClass:</h6><p>用在确定是父类的entity上。父类的属性子类可以继承。</p>
+<h6 id="NoRepositoryBean"><a href="#NoRepositoryBean" class="headerlink" title="@NoRepositoryBean:"></a>@NoRepositoryBean:</h6><p>一般用作父类的repository，有这个注解，spring不会去实例化该repository。</p>
+<h6 id="Column："><a href="#Column：" class="headerlink" title="@Column："></a>@Column：</h6><p>如果字段名与列名相同，则可以省略。</p>
+<h6 id="Id："><a href="#Id：" class="headerlink" title="@Id："></a>@Id：</h6><p>表示该属性为主键。</p>
+<h6 id="GeneratedValue-strategy-GenerationType-SEQUENCE-generator-“repair-seq”-："><a href="#GeneratedValue-strategy-GenerationType-SEQUENCE-generator-“repair-seq”-：" class="headerlink" title="@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = “repair_seq”)："></a>@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = “repair_seq”)：</h6><p>表示主键生成策略是sequence（可以为Auto、IDENTITY、native等，Auto表示可在多个数据库间切换），指定sequence的名字是repair_seq。</p>
+<h6 id="SequenceGeneretor-name-“repair-seq”-sequenceName-“seq-repair”-allocationSize-1-："><a href="#SequenceGeneretor-name-“repair-seq”-sequenceName-“seq-repair”-allocationSize-1-：" class="headerlink" title="@SequenceGeneretor(name = “repair_seq”, sequenceName = “seq_repair”, allocationSize = 1)："></a>@SequenceGeneretor(name = “repair_seq”, sequenceName = “seq_repair”, allocationSize = 1)：</h6><p>name为sequence的名称，以便使用，sequenceName为数据库的sequence名称，两个名称可以一致。</p>
+<h6 id="Transient："><a href="#Transient：" class="headerlink" title="@Transient："></a>@Transient：</h6><p>表示该属性并非一个到数据库表的字段的映射,ORM框架将忽略该属性。如果一个属性并非数据库表的字段映射,就务必将其标示为@Transient,否则,ORM框架默认其注解为@Basic。@Basic(fetch=FetchType.LAZY)：标记可以指定实体属性的加载方式</p>
+<h6 id="JsonIgnore："><a href="#JsonIgnore：" class="headerlink" title="@JsonIgnore："></a>@JsonIgnore：</h6><p>作用是json序列化时将Java bean中的一些属性忽略掉,序列化和反序列化都受影响。</p>
+<h6 id="JoinColumn（name-”loginId”）"><a href="#JoinColumn（name-”loginId”）" class="headerlink" title="@JoinColumn（name=”loginId”）:"></a>@JoinColumn（name=”loginId”）:</h6><p>一对一：本表中指向另一个表的外键。一对多：另一个表指向本表的外键。</p>
+<h6 id="OneToOne、-OneToMany、-ManyToOne："><a href="#OneToOne、-OneToMany、-ManyToOne：" class="headerlink" title="@OneToOne、@OneToMany、@ManyToOne："></a>@OneToOne、@OneToMany、@ManyToOne：</h6><p>对应hibernate配置文件中的一对一，一对多，多对一。</p>
+<h1 id="四、springMVC相关注解"><a href="#四、springMVC相关注解" class="headerlink" title="四、springMVC相关注解"></a>四、springMVC相关注解</h1><h6 id="RequestMapping：-1"><a href="#RequestMapping：-1" class="headerlink" title="@RequestMapping："></a>@RequestMapping：</h6><p>@RequestMapping(“/path”)表示该控制器处理所有“/path”的UR L请求。RequestMapping是一个用来处理请求地址映射的注解，可用于类或方法上。<br>用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。该注解有六个属性：<br>params:指定request中必须包含某些参数值是，才让该方法处理。<br>headers:指定request中必须包含某些指定的header值，才能让该方法处理请求。<br>value:指定请求的实际地址，指定的地址可以是URI Template 模式<br>method:指定请求的method类型， GET、POST、PUT、DELETE等<br>consumes:指定处理请求的提交内容类型（Content-Type），如application/json,text/html;<br>produces:指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回</p>
+<h6 id="RequestParam："><a href="#RequestParam：" class="headerlink" title="@RequestParam："></a>@RequestParam：</h6><p>用在方法的参数前面。<br>@RequestParam<br>String a =request.getParameter(“a”)。</p>
+<h6 id="PathVariable-1"><a href="#PathVariable-1" class="headerlink" title="@PathVariable:"></a>@PathVariable:</h6><p>路径变量。如</p>
+<p><pre><code><br>RequestMapping(“user/get/mac/{macAddress}”)<br>public String getByMacAddress(@PathVariable String macAddress){<br>//do something;<br>}<br></code></pre><br>参数与大括号里的名字一样要相同。</p>
+<h1 id="五、全局异常处理"><a href="#五、全局异常处理" class="headerlink" title="五、全局异常处理"></a>五、全局异常处理</h1><h6 id="ControllerAdvice："><a href="#ControllerAdvice：" class="headerlink" title="@ControllerAdvice："></a>@ControllerAdvice：</h6><p>包含@Component。可以被扫描到。统一处理异常。</p>
+<h6 id="ExceptionHandler（Exception-class）："><a href="#ExceptionHandler（Exception-class）：" class="headerlink" title="@ExceptionHandler（Exception.class）："></a>@ExceptionHandler（Exception.class）：</h6><p>用在方法上面表示遇到这个异常就执行以下方法。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>如果觉得不错，打赏一点。</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="王晨 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="王晨 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/注解/" rel="tag"># 注解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/23/hello-hexo/" rel="next" title="hello-hexo">
+                <i class="fa fa-chevron-left"></i> hello-hexo
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/23/jq/" rel="prev" title="序列化表单">
+                序列化表单 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="王晨">
+            
+              <p class="site-author-name" itemprop="name">王晨</p>
+              <p class="site-description motion-element" itemprop="description">这是一个利用Hexo搭建的博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/wang271724646" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/5745955622/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、注解-annotations-列表"><span class="nav-number">1.</span> <span class="nav-text">一、注解(annotations)列表</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#SpringBootApplication："><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">@SpringBootApplication：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Configuration"><span class="nav-number">1.0.0.0.0.2.</span> <span class="nav-text">@Configuration</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#EnableAutoConfiguration"><span class="nav-number">1.0.0.0.0.3.</span> <span class="nav-text">@EnableAutoConfiguration</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ComponentScan"><span class="nav-number">1.0.0.0.0.4.</span> <span class="nav-text">@ComponentScan</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Component"><span class="nav-number">1.0.0.0.0.5.</span> <span class="nav-text">@Component</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#RestController"><span class="nav-number">1.0.0.0.0.6.</span> <span class="nav-text">@RestController</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Autowired"><span class="nav-number">1.0.0.0.0.7.</span> <span class="nav-text">@Autowired</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PathVariable"><span class="nav-number">1.0.0.0.0.8.</span> <span class="nav-text">@PathVariable</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#JsonBackReference"><span class="nav-number">1.0.0.0.0.9.</span> <span class="nav-text">@JsonBackReference</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#RepositoryRestResourcepublic"><span class="nav-number">1.0.0.0.0.10.</span> <span class="nav-text">@RepositoryRestResourcepublic</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#二、注解-annotations-详解"><span class="nav-number">2.</span> <span class="nav-text">二、注解(annotations)详解</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#SpringBootApplication：-1"><span class="nav-number">2.0.0.0.0.1.</span> <span class="nav-text">@SpringBootApplication：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ResponseBody："><span class="nav-number">2.0.0.0.0.2.</span> <span class="nav-text">@ResponseBody：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Controller："><span class="nav-number">2.0.0.0.0.3.</span> <span class="nav-text">@Controller：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#RestController："><span class="nav-number">2.0.0.0.0.4.</span> <span class="nav-text">@RestController：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#RequestMapping："><span class="nav-number">2.0.0.0.0.5.</span> <span class="nav-text">@RequestMapping：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#EnableAutoConfiguration："><span class="nav-number">2.0.0.0.0.6.</span> <span class="nav-text">@EnableAutoConfiguration：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ComponentScan："><span class="nav-number">2.0.0.0.0.7.</span> <span class="nav-text">@ComponentScan：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Configuration："><span class="nav-number">2.0.0.0.0.8.</span> <span class="nav-text">@Configuration：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Import："><span class="nav-number">2.0.0.0.0.9.</span> <span class="nav-text">@Import：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ImportResource："><span class="nav-number">2.0.0.0.0.10.</span> <span class="nav-text">@ImportResource：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Autowired："><span class="nav-number">2.0.0.0.0.11.</span> <span class="nav-text">@Autowired：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Service："><span class="nav-number">2.0.0.0.0.12.</span> <span class="nav-text">@Service：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Repository："><span class="nav-number">2.0.0.0.0.13.</span> <span class="nav-text">@Repository：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Bean："><span class="nav-number">2.0.0.0.0.14.</span> <span class="nav-text">@Bean：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Value："><span class="nav-number">2.0.0.0.0.15.</span> <span class="nav-text">@Value：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Inject："><span class="nav-number">2.0.0.0.0.16.</span> <span class="nav-text">@Inject：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Component："><span class="nav-number">2.0.0.0.0.17.</span> <span class="nav-text">@Component：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Bean"><span class="nav-number">2.0.0.0.0.18.</span> <span class="nav-text">@Bean:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#AutoWired："><span class="nav-number">2.0.0.0.0.19.</span> <span class="nav-text">@AutoWired：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Qualifier："><span class="nav-number">2.0.0.0.0.20.</span> <span class="nav-text">@Qualifier：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Resource-name-”name”-type-”type”-："><span class="nav-number">2.0.0.0.0.21.</span> <span class="nav-text">@Resource(name=”name”,type=”type”)：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、JPA注解"><span class="nav-number">3.</span> <span class="nav-text">三、JPA注解</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Entity：-Table-name-”“-："><span class="nav-number">3.0.0.0.0.1.</span> <span class="nav-text">@Entity：@Table(name=”“)：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#MappedSuperClass"><span class="nav-number">3.0.0.0.0.2.</span> <span class="nav-text">@MappedSuperClass:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#NoRepositoryBean"><span class="nav-number">3.0.0.0.0.3.</span> <span class="nav-text">@NoRepositoryBean:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Column："><span class="nav-number">3.0.0.0.0.4.</span> <span class="nav-text">@Column：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Id："><span class="nav-number">3.0.0.0.0.5.</span> <span class="nav-text">@Id：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#GeneratedValue-strategy-GenerationType-SEQUENCE-generator-“repair-seq”-："><span class="nav-number">3.0.0.0.0.6.</span> <span class="nav-text">@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = “repair_seq”)：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#SequenceGeneretor-name-“repair-seq”-sequenceName-“seq-repair”-allocationSize-1-："><span class="nav-number">3.0.0.0.0.7.</span> <span class="nav-text">@SequenceGeneretor(name = “repair_seq”, sequenceName = “seq_repair”, allocationSize = 1)：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Transient："><span class="nav-number">3.0.0.0.0.8.</span> <span class="nav-text">@Transient：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#JsonIgnore："><span class="nav-number">3.0.0.0.0.9.</span> <span class="nav-text">@JsonIgnore：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#JoinColumn（name-”loginId”）"><span class="nav-number">3.0.0.0.0.10.</span> <span class="nav-text">@JoinColumn（name=”loginId”）:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#OneToOne、-OneToMany、-ManyToOne："><span class="nav-number">3.0.0.0.0.11.</span> <span class="nav-text">@OneToOne、@OneToMany、@ManyToOne：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、springMVC相关注解"><span class="nav-number">4.</span> <span class="nav-text">四、springMVC相关注解</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#RequestMapping：-1"><span class="nav-number">4.0.0.0.0.1.</span> <span class="nav-text">@RequestMapping：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#RequestParam："><span class="nav-number">4.0.0.0.0.2.</span> <span class="nav-text">@RequestParam：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#PathVariable-1"><span class="nav-number">4.0.0.0.0.3.</span> <span class="nav-text">@PathVariable:</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、全局异常处理"><span class="nav-number">5.</span> <span class="nav-text">五、全局异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#ControllerAdvice："><span class="nav-number">5.0.0.0.0.1.</span> <span class="nav-text">@ControllerAdvice：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ExceptionHandler（Exception-class）："><span class="nav-number">5.0.0.0.0.2.</span> <span class="nav-text">@ExceptionHandler（Exception.class）：</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王晨</span>
+
+  
+</div>
+
+
+  
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
