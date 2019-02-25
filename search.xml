@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[git]]></title>
+    <url>%2F2019%2F02%2F25%2Fgit%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[ajax]]></title>
     <url>%2F2019%2F02%2F23%2Fajax%2F</url>
     <content type="text"><![CDATA[jq简化ajax$.ajax({ url: ‘String —-(默认: 当前页地址) 发送请求的地址。/controller层拦截’, type: ‘String—- (默认: “GET”) 请求方式 (“POST” 或 “GET”)， 默认为 “GET”。注意：其它 HTTP 请求方法，如 PUT 和 DELETE 也可以使用，但仅部分浏览器支持。’, async： Boolean—- (默认: true) 默认设置下，所有请求均为异步请求。如果需要发送同步请求，请将此选项设置为 false。注意，同步请求将锁住浏览器，用户其它操作必须等待请求完成才可以执行。 data: Object,String —-发送到服务器的数据(参数)。 dataType: ‘String –预期服务器返回的数据类型。’, error: function(){ alert(‘Error loading XML document’); }, success: function(data){ // do something }});]]></content>
