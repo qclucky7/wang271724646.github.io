@@ -336,6 +336,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/git/" itemprop="url" rel="index">
+                    <span itemprop="name">git</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -365,7 +387,81 @@
       
         
           
-            
+            <h1 id="git常用指令"><a href="#git常用指令" class="headerlink" title="git常用指令"></a>git常用指令</h1><p> Workspace：工作区<br> Index / Stage：暂存区<br> Repository：仓库区（或本地仓库）<br> Remote：远程仓库</p>
+<h2 id="一、新建代码库"><a href="#一、新建代码库" class="headerlink" title="一、新建代码库"></a>一、新建代码库</h2><p> 在当前目录新建一个Git代码库<br>  $ git init</p>
+<p> 新建一个目录，将其初始化为Git代码库<br>  $ git init [project-name]</p>
+<p> 下载一个项目和它的整个代码历史<br>  $ git clone [url]</p>
+<h2 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h2><p> 显示当前的Git配置<br>  $ git config –list</p>
+<p> 编辑Git配置文件<br>  $ git config -e [–global]</p>
+<p> 设置提交代码时的用户信息<br>  $ git config [–global] user.name “[name]”<br>  $ git config [–global] user.email “[email address]”</p>
+<h2 id="三、增加-删除文件"><a href="#三、增加-删除文件" class="headerlink" title="三、增加/删除文件"></a>三、增加/删除文件</h2><p>  添加指定文件到暂存区<br>   $ git add [file1] [file2] …</p>
+<p>  添加指定目录到暂存区，包括子目录<br>   $ git add [dir]</p>
+<p>  添加当前目录的所有文件到暂存区<br>   $ git add .</p>
+<p>  删除工作区文件，并且将这次删除放入暂存区<br>   $ git rm [file1] [file2] …</p>
+<p>  停止追踪指定文件，但该文件会保留在工作区<br>   $ git rm –cached [file]</p>
+<p> 改名文件，并且将这个改名放入暂存区<br>   $ git mv [file-original] [file-renamed]</p>
+<h2 id="四、代码提交"><a href="#四、代码提交" class="headerlink" title="四、代码提交"></a>四、代码提交</h2><p>  提交暂存区到仓库区<br>   $ git commit -m [message]</p>
+<p>  提交暂存区的指定文件到仓库区<br>   $ git commit [file1] [file2] … -m [message]</p>
+<p>  提交工作区自上次commit之后的变化，直接到仓库区<br>   $ git commit -a</p>
+<p>  提交时显示所有diff信息<br>   $ git commit -v</p>
+<p>  使用一次新的commit，替代上一次提交<br>  如果代码没有任何新变化，则用来改写上一次commit的提交信息<br>   $ git commit –amend -m [message]</p>
+<p>  重做上一次commit，并包括指定文件的新变化<br>   $ git commit –amend  …</p>
+<h2 id="五、分支"><a href="#五、分支" class="headerlink" title="五、分支"></a>五、分支</h2><p>  列出所有本地分支<br>   $ git branch</p>
+<p>  列出所有远程分支<br>   $ git branch -r</p>
+<p>  列出所有本地分支和远程分支<br>   $ git branch -a</p>
+<p>  新建一个分支，但依然停留在当前分支<br>   $ git branch [branch-name]</p>
+<p>  新建一个分支，并切换到该分支<br>   $ git checkout -b [branch]</p>
+<p>  新建一个分支，指向指定commit<br>   $ git branch [branch] [commit]</p>
+<p>  新建一个分支，与指定的远程分支建立追踪关系<br>   $ git branch –track [branch] [remote-branch]</p>
+<p>  切换到指定分支，并更新工作区<br>   $ git checkout [branch-name]</p>
+<p>  建立追踪关系，在现有分支与指定的远程分支之间<br>   $ git branch –set-upstream [branch] [remote-branch]</p>
+<p>   git branch –set-upstream-to=origin/remote_branch  your_branch</p>
+<p>  其中，origin/remote_branch是你本地分支对应的远程分支；your_branch是你当前的本地分支。</p>
+<p>  合并指定分支到当前分支<br>   $ git merge [branch]<br>  选择一个commit，合并进当前分支<br>   $ git cherry-pick [commit]<br>  删除分支<br>   $ git branch -d [branch-name]<br>  删除远程分支<br>   $ git push origin –delete<br>   $ git branch -dr</p>
+<h2 id="六、标签"><a href="#六、标签" class="headerlink" title="六、标签"></a>六、标签</h2><p>  列出所有tag<br>   $ git tag</p>
+<p>  新建一个tag在当前commit<br>   $ git tag [tag]</p>
+<p>  新建一个tag在指定commit<br>   $ git tag [tag] [commit]</p>
+<p>  查看tag信息<br>   $ git show [tag]</p>
+<p>  提交指定tag<br>   $ git push [remote] [tag]</p>
+<p>  提交所有tag<br>   $ git push [remote] –tags</p>
+<p>  新建一个分支，指向某个tag<br>   $ git checkout -b [branch] [tag]</p>
+<h2 id="七、查看信息"><a href="#七、查看信息" class="headerlink" title="七、查看信息"></a>七、查看信息</h2><p>  显示有变更的文件<br>   $ git status</p>
+<p>  显示当前分支的版本历史<br>   $ git log</p>
+<p>  显示commit历史，以及每次commit发生变更的文件<br>   $ git log –stat</p>
+<p>  显示某个文件的版本历史，包括文件改名<br>   $ git log –follow [file]<br>   $ git whatchanged [file]</p>
+<p>  显示指定文件相关的每一次diff<br>   $ git log -p [file]</p>
+<p>  显示指定文件是什么人在什么时间修改过<br>   $ git blame [file]</p>
+<p>  显示暂存区和工作区的差异<br>   $ git diff</p>
+<p>  显示暂存区和上一个commit的差异<br>   $ git diff –cached []</p>
+<p>  显示工作区与当前分支最新commit之间的差异<br>   $ git diff HEAD</p>
+<p>  显示两次提交之间的差异<br>   $ git diff [first-branch]…[second-branch]</p>
+<p>  显示某次提交的元数据和内容变化<br>   $ git show [commit]</p>
+<p>  显示某次提交发生变化的文件<br>   $ git show –name-only [commit]</p>
+<p>  显示某次提交时，某个文件的内容<br>   $ git show [commit]:[filename]</p>
+<p>  显示当前分支的最近几次提交<br>   $ git reflog</p>
+<h2 id="八、远程同步"><a href="#八、远程同步" class="headerlink" title="八、远程同步"></a>八、远程同步</h2><p>  下载远程仓库的所有变动<br>   $ git fetch [remote]</p>
+<p>  显示所有远程仓库<br>   $ git remote -v</p>
+<p>  显示某个远程仓库的信息<br>   $ git remote show [remote]</p>
+<p>  增加一个新的远程仓库，并命名<br>   $ git remote add [shortname] [url]</p>
+<p>  取回远程仓库的变化，并与本地分支合并<br>   $ git pull [remote] [branch]</p>
+<p>  上传本地指定分支到远程仓库<br>   $ git push [remote] [branch]</p>
+<p>  强行推送当前分支到远程仓库，即使有冲突<br>   $ git push [remote] –force</p>
+<p>  推送所有分支到远程仓库<br>   $ git push [remote] –all</p>
+<h2 id="九、撤销"><a href="#九、撤销" class="headerlink" title="九、撤销"></a>九、撤销</h2><p>  恢复暂存区的指定文件到工作区<br>   $ git checkout [file]</p>
+<p>  恢复某个commit的指定文件到工作区<br>   git checkout [commit] [file]</p>
+<p>  恢复上一个commit的所有文件到工作区<br>   $ git checkout .</p>
+<p>  重置暂存区的指定文件，与上一次commit保持一致，但工作区不变<br>   $ git reset [file]</p>
+<p>  置暂存区与工作区，与上一次commit保持一致<br>   $ git reset –hard</p>
+<p>  重置当前分支的指针为指定commit，同时重置暂存区，但工作区不变<br>   $ git reset [commit]</p>
+<p>  重置当前分支的HEAD为指定commit，同时重置暂存区和工作区，与指定commit一致<br>   $ git reset –hard [commit]</p>
+<p>  重置当前HEAD为指定commit，但保持暂存区和工作区不变<br>   $ git reset –keep [commit]</p>
+<p>  新建一个commit，用来撤销指定commit<br>  后者的所有变化都将被前者抵消，并且应用到当前分支<br>   $ git revert [commit]</p>
+<h2 id="十、其他"><a href="#十、其他" class="headerlink" title="十、其他"></a>十、其他</h2><p>  生成一个可供发布的压缩包<br>   $ git archive</p>
+<p>  备份当前工作区的内容<br>   $ git stash</p>
+<p>  从Git栈中读取最近一次保存的内容，恢复工作区的相关内容<br>   $ git stash pop</p>
+<p>  显示Git栈内的所有备份<br>   $ git stash list</p>
+<p>  清空Git栈<br>   $ git stash clear</p>
+
           
         
       
@@ -1151,7 +1247,7 @@ $(&quot;#form&quot;).serialize();
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1162,7 +1258,7 @@ $(&quot;#form&quot;).serialize();
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
