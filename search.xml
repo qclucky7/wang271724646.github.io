@@ -3,7 +3,13 @@
   <entry>
     <title><![CDATA[json]]></title>
     <url>%2F2019%2F03%2F12%2Fjson%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[JSON是什么？(JSON和JavaScript对象有什么区别？)如何把JS对象转化为JSON字符串，又如何把JSON字符串转化为JavaScript对象？JSON （JavaScript Object Notation）一种简单的数据格式，比xml更轻巧。JSON 是 JavaScript 原生格式，这意味着在JavaScript 中处理 JSON 数据不需要任何特殊的 API 或工具包。JSON的规则很简单： 对象是一个无序的“名称/值”对集合。一个对象以“{”（左括号）开始，“}”（右括号）结束。每个“名称”后跟一个“:”（冒号）；“名称/值”对之间使用“,”（逗号）分隔。它是一种严格的js对象的格式，JSON的属性名必须有双引号，如果值是字符串，也必须是双引号； JSON只是一种数据格式（或者叫数据形式） var obj2={};//这只是JS对象 var obj3={width:100,height:200};/*这跟JSON就更不沾边了,只是JS的 对象 */ var obj4={'width':100,'height':200};/*这跟JSON就更不沾边了,只是JS的对象 */ var obj5={"width":100,"height":200,"name":"rose"}; /*我们可以把这个称做：JSON格式的JavaScript对象 */ var str1='{"width":100,"height":200,"name":"rose"}';/*我们可以把这个称做：JSON格式的字符串 */ var a=[ {"width":100,"height":200,"name":"rose"}, {"width":100,"height":200,"name":"rose"}, {"width":100,"height":200,"name":"rose"}, ]; /*这个叫JSON格式的数组，是JSON的稍复杂一点的形式 */ var str2='['+ '{"width":100,"height":200,"name":"rose"},'+ '{"width":100,"height":200,"name":"rose"},'+ '{"width":100,"height":200,"name":"rose"},'+ ']' ; /* 这个叫稍复杂一点的JSON格式的字符串 */]]></content>
+      <categories>
+        <category>json</category>
+      </categories>
+      <tags>
+        <tag>json</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[git]]></title>
