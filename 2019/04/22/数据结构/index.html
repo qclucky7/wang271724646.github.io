@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="json,">
+  <meta name="keywords" content="数据结构,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="JSON是什么？(JSON和JavaScript对象有什么区别？)如何把JS对象转化为JSON字符串，又如何把JSON字符串转化为JavaScript对象？JSON （JavaScript Object Notation）一种简单的数据格式，比xml更轻巧。JSON 是 JavaScript 原生格式，这意味着在JavaScript 中处理 JSON 数据不需要任何特殊的 API 或工具包。JSO">
-<meta name="keywords" content="json">
+<meta name="description" content="顺序存储数组，查询快，增删慢。ArrayList底层自动扩容。(扩容原数组的一半) 链式存储链表，查询慢，增删快。 双向链表Linklist底层是双向链表。 散列存储哈希表，数组加链表。(JKD7之前)哈希表，数组加链表，当链表大于8，变为红黑树。(JKD8开始)HashSet和HashMap底层是哈希表。HashSet底层是new了一个HashMap。 栈队列栈:后进先出。队列:先进先出。 树有">
+<meta name="keywords" content="数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="json">
-<meta property="og:url" content="http://yoursite.com/2019/03/12/json/index.html">
+<meta property="og:title" content="数据结构">
+<meta property="og:url" content="http://yoursite.com/2019/04/22/数据结构/index.html">
 <meta property="og:site_name" content="清晨">
-<meta property="og:description" content="JSON是什么？(JSON和JavaScript对象有什么区别？)如何把JS对象转化为JSON字符串，又如何把JSON字符串转化为JavaScript对象？JSON （JavaScript Object Notation）一种简单的数据格式，比xml更轻巧。JSON 是 JavaScript 原生格式，这意味着在JavaScript 中处理 JSON 数据不需要任何特殊的 API 或工具包。JSO">
+<meta property="og:description" content="顺序存储数组，查询快，增删慢。ArrayList底层自动扩容。(扩容原数组的一半) 链式存储链表，查询慢，增删快。 双向链表Linklist底层是双向链表。 散列存储哈希表，数组加链表。(JKD7之前)哈希表，数组加链表，当链表大于8，变为红黑树。(JKD8开始)HashSet和HashMap底层是哈希表。HashSet底层是new了一个HashMap。 栈队列栈:后进先出。队列:先进先出。 树有">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/json.jpg">
-<meta property="og:updated_time" content="2019-03-12T09:23:54.935Z">
+<meta property="og:updated_time" content="2019-04-22T11:50:02.275Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="json">
-<meta name="twitter:description" content="JSON是什么？(JSON和JavaScript对象有什么区别？)如何把JS对象转化为JSON字符串，又如何把JSON字符串转化为JavaScript对象？JSON （JavaScript Object Notation）一种简单的数据格式，比xml更轻巧。JSON 是 JavaScript 原生格式，这意味着在JavaScript 中处理 JSON 数据不需要任何特殊的 API 或工具包。JSO">
-<meta name="twitter:image" content="http://yoursite.com/images/json.jpg">
+<meta name="twitter:title" content="数据结构">
+<meta name="twitter:description" content="顺序存储数组，查询快，增删慢。ArrayList底层自动扩容。(扩容原数组的一半) 链式存储链表，查询慢，增删快。 双向链表Linklist底层是双向链表。 散列存储哈希表，数组加链表。(JKD7之前)哈希表，数组加链表，当链表大于8，变为红黑树。(JKD8开始)HashSet和HashMap底层是哈希表。HashSet底层是new了一个HashMap。 栈队列栈:后进先出。队列:先进先出。 树有">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/03/12/json/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/22/数据结构/">
 
 
 
 
 
-  <title>json | 清晨</title>
+  <title>数据结构 | 清晨</title>
   
 
 
@@ -297,7 +295,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/12/json/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/22/数据结构/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="王晨">
@@ -314,7 +312,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">json</h1>
+          <h1 class="post-title" itemprop="name headline">数据结构</h1>
         
 
         <div class="post-meta">
@@ -326,8 +324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-12T16:46:48+08:00">
-                2019-03-12
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-22T19:15:42+08:00">
+                2019-04-22
               </time>
             
 
@@ -349,8 +347,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/json/" itemprop="url" rel="index">
-                    <span itemprop="name">json</span>
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
                   </a>
                 </span>
 
@@ -386,32 +384,12 @@
       
 
       
-        <h1 id="JSON是什么？"><a href="#JSON是什么？" class="headerlink" title="JSON是什么？"></a>JSON是什么？</h1><h6 id="JSON和JavaScript对象有什么区别？"><a href="#JSON和JavaScript对象有什么区别？" class="headerlink" title="(JSON和JavaScript对象有什么区别？)"></a>(JSON和JavaScript对象有什么区别？)</h6><h6 id="如何把JS对象转化为JSON字符串，又如何把JSON字符串转化为JavaScript对象？"><a href="#如何把JS对象转化为JSON字符串，又如何把JSON字符串转化为JavaScript对象？" class="headerlink" title="如何把JS对象转化为JSON字符串，又如何把JSON字符串转化为JavaScript对象？"></a>如何把JS对象转化为JSON字符串，又如何把JSON字符串转化为JavaScript对象？</h6><h6 id="JSON-（JavaScript-Object-Notation）一种简单的数据格式，比xml更轻巧。"><a href="#JSON-（JavaScript-Object-Notation）一种简单的数据格式，比xml更轻巧。" class="headerlink" title="JSON （JavaScript Object Notation）一种简单的数据格式，比xml更轻巧。"></a>JSON （JavaScript Object Notation）一种简单的数据格式，比xml更轻巧。</h6><p>JSON 是 JavaScript 原生格式，这意味着在JavaScript 中处理 JSON 数据不需要任何特殊的 API 或工具包。<br>JSON的规则很简单： 对象是一个无序的“名称/值”对集合。一个对象以“{”（左括号）开始，“}”（右括号）结束。每个“名称”后跟一个“:”（冒号）；“名称/值”对之间使用“,”（逗号）分隔。<br>它是一种严格的js对象的格式，JSON的属性名必须有双引号，如果值是字符串，也必须是双引号；</p>
-<h1 id="JSON只是一种数据格式（或者叫数据形式）"><a href="#JSON只是一种数据格式（或者叫数据形式）" class="headerlink" title="JSON只是一种数据格式（或者叫数据形式）"></a>JSON只是一种数据格式（或者叫数据形式）</h1><a id="more"></a>
-<pre><code>
-<script>
-var obj2={};//这只是JS对象
-var obj3={width:100,height:200};/*这跟JSON就更不沾边了,只是JS的 对象 */
-var obj4={'width':100,'height':200};/*这跟JSON就更不沾边了,只是JS的对象 */
-var obj5={"width":100,"height":200,"name":"rose"}; /*我们可以把这个称做：JSON格式的JavaScript对象 */
-var str1='{"width":100,"height":200,"name":"rose"}';/*我们可以把这个称做：JSON格式的字符串 */
-var a=[
- {"width":100,"height":200,"name":"rose"},
- {"width":100,"height":200,"name":"rose"},
- {"width":100,"height":200,"name":"rose"},
- ];
- /*这个叫JSON格式的数组，是JSON的稍复杂一点的形式 */
-var str2='['+
- '{"width":100,"height":200,"name":"rose"},'+
- '{"width":100,"height":200,"name":"rose"},'+
- '{"width":100,"height":200,"name":"rose"},'+
- ']' ;
- /* 这个叫稍复杂一点的JSON格式的字符串 */
-</script></code></pre>
-
-
-
-<p><img src="/images/json.jpg" alt="Alt text"></p>
+        <h1 id="顺序存储"><a href="#顺序存储" class="headerlink" title="顺序存储"></a>顺序存储</h1><p>数组，查询快，增删慢。<br>ArrayList底层自动扩容。(扩容原数组的一半)</p>
+<h1 id="链式存储"><a href="#链式存储" class="headerlink" title="链式存储"></a>链式存储</h1><p>链表，查询慢，增删快。</p>
+<h2 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h2><p>Linklist底层是双向链表。</p>
+<h1 id="散列存储"><a href="#散列存储" class="headerlink" title="散列存储"></a>散列存储</h1><p>哈希表，数组加链表。(JKD7之前)<br>哈希表，数组加链表，当链表大于8，变为红黑树。(JKD8开始)<br>HashSet和HashMap底层是哈希表。<br>HashSet底层是new了一个HashMap。</p>
+<h1 id="栈队列"><a href="#栈队列" class="headerlink" title="栈队列"></a>栈队列</h1><p>栈:后进先出。<br>队列:先进先出。</p>
+<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><p>有序树:从左到右依次有序。<br>m叉树:树中所有节点最大度数为m的有序树。<br>森林:森林是由N课互不相交的树组成的集合。一个树去掉根节点变为森林，反之亦然。<br>二叉树:每个结点的度均不超过2的有序树。<br>满二叉树:二叉树中，每个结点都达到最大数，即每层结点都是满的。<br>完全二叉树:满二叉树，在最下层从右侧起去掉相邻的若干子结点。<br>树的遍历:先序遍历:根，左，右<br>          中序遍历:左，根，右<br>          后序遍历:左，右，根<br>平衡二叉树:它的左右子树的高度查(平均因子)的绝对值不超过1，并且左右两个子树都是一棵平衡二叉树。(减少二叉树层次，提高查找速度)<br>红黑树:每个结点不是黑色就是红色。<br>        根节点是黑色。<br>        子节点是黑色。NULL也是黑色补全。<br>        TreeSet和TreeMap底层是红黑树，TreeSet底层是new了一个TreeMap。<br>B树:与二叉树相比是多叉的，可以降低树的深度，提高查找效率。<br>     常作为索引<br>B+树:非叶子结点作为叶子结点的索引，数据只存储在叶子结点。<br>     数据库的索引默认采用B+树。</p>
 
       
     </div>
@@ -453,7 +431,7 @@ var str2='['+
       
         <div class="post-tags">
           
-            <a href="/tags/json/" rel="tag"># json</a>
+            <a href="/tags/数据结构/" rel="tag"># 数据结构</a>
           
         </div>
       
@@ -466,8 +444,8 @@ var str2='['+
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/25/git/" rel="next" title="git">
-                <i class="fa fa-chevron-left"></i> git
+              <a href="/2019/03/12/json/" rel="next" title="json">
+                <i class="fa fa-chevron-left"></i> json
               </a>
             
           </div>
@@ -475,10 +453,6 @@ var str2='['+
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/22/数据结构/" rel="prev" title="数据结构">
-                数据结构 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -628,7 +602,7 @@ var str2='['+
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JSON是什么？"><span class="nav-number">1.</span> <span class="nav-text">JSON是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#JSON和JavaScript对象有什么区别？"><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">(JSON和JavaScript对象有什么区别？)</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#如何把JS对象转化为JSON字符串，又如何把JSON字符串转化为JavaScript对象？"><span class="nav-number">1.0.0.0.0.2.</span> <span class="nav-text">如何把JS对象转化为JSON字符串，又如何把JSON字符串转化为JavaScript对象？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#JSON-（JavaScript-Object-Notation）一种简单的数据格式，比xml更轻巧。"><span class="nav-number">1.0.0.0.0.3.</span> <span class="nav-text">JSON （JavaScript Object Notation）一种简单的数据格式，比xml更轻巧。</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#JSON只是一种数据格式（或者叫数据形式）"><span class="nav-number">2.</span> <span class="nav-text">JSON只是一种数据格式（或者叫数据形式）</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#顺序存储"><span class="nav-number">1.</span> <span class="nav-text">顺序存储</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#链式存储"><span class="nav-number">2.</span> <span class="nav-text">链式存储</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#双向链表"><span class="nav-number">2.1.</span> <span class="nav-text">双向链表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#散列存储"><span class="nav-number">3.</span> <span class="nav-text">散列存储</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#栈队列"><span class="nav-number">4.</span> <span class="nav-text">栈队列</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#树"><span class="nav-number">5.</span> <span class="nav-text">树</span></a></li></ol></div>
             
 
           </div>
